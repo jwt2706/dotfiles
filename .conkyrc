@@ -1,0 +1,120 @@
+conky.config = {
+-- conky configuration
+--
+-- The list of variables has been removed from this file in favour
+-- of keeping the documentation more maintainable.
+-- Check http://conky.sf.net for an up-to-date-list.
+--
+-- For ideas about how to modify conky, please see:
+-- http://conky.sourceforge.net/variables.html
+--
+-- For help with conky, please see:
+-- http://conky.sourceforge.net/documentation.html
+--
+-- Enjoy! :)
+
+--[[
+      NOTE FROM ME:
+      i was inspired by this https://github.com/lutzseverino/conky-setup/
+      i noticed they were using the same wallpaper as me lol, so i went on to use some of the stuff there :)
+]]
+
+--##############################################
+--# Settings
+--##############################################
+	background = true,
+	use_xft = true,
+	font = 'Liberation Sans:size=9',
+	xftalpha = 1,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = 'desktop',
+--own_window_argb_visual yes
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	minimum_width = 200, minimum_height = 200,
+	maximum_width = 240,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+	alignment = 'middle_left',
+	gap_x = 200,
+	gap_y = 40,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = false,
+	
+	  -- Colors
+ 
+    	default_color = 'white',
+    	default_outline_color = 'white',
+    	default_shade_color = 'white',
+    
+    	-- md blue (200)
+    	color1 = 'b3e5fc',										-- title color
+    	
+    	-- md light blue (200 -> light)
+    	color2 = 'e6ffff',										-- subtitle color
+    	
+    	-- md blue (200)
+    	color3 = '90caf9',										-- text color
+    	
+    	-- md dark blue(200 -> dark)
+    	color4 = 'ffe0b2'										-- accent color
+    	
+--##############################################
+--#  Output
+--##############################################
+};
+
+conky.text = [[
+
+${font Liberation Sans:size=36}${color1}${alignc}${time %I:%M}
+${voffset -36}${font}${alignc}${color}${time %a, %d %B %Y}
+
+${font}${color1}S Y S T E M    I N F O R M A T I O N  ${hr 2}
+${color3}Kernel: ${alignr}${color}${kernel}
+${color3}Distro: ${alignr}${color}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4"" $5'}}
+${color3}Uptime: ${alignr}${color}${uptime}
+${color3}Host: ${alignr}${color}${nodename}
+${color3}Disk usage: ${alignr}${color}${fs_used /}/${fs_size /}
+${color3}Swap usage: ${alignr}${color}${swap}/${swapmax}
+${color3}CPU  [ ${color1}${execi 9999999999 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 19-26}${color3} ]: ${alignr}${color}${cpu cpu0}%
+${color3}RAM: ${alignr}${color}${mem}/${memmax}
+${color1}    Core 1:  ${color4}${cpubar cpu1}
+${color1}    Core 2:  ${color4}${cpubar cpu2}
+${color1}    Core 3:  ${color4}${cpubar cpu3}
+${color1}    Core 4:  ${color4}${cpubar cpu4}
+
+${font}${color1}T E M P E R A T U R E  ${hr 2}
+${voffset 5}${color}${font}${color3}CPU: ${color}${alignr}${execi 5 sensors | grep CPU: | cut -c 16-19} C
+
+${font}${color1}V P N  ${hr 2}
+${color3}${execi 20 ./documents/scripts/vpn_status.sh}
+
+${font}${color1}S H O R T C U T    K E Y S  ${hr 2}
+${color3}Alt+F2${alignr}${color} Run Dialog
+${color3}Alt+F3${alignr}${color} Alt Menu
+${color3}Super+Space${alignr}${color} Main Menu
+${color3}Super+Tab${alignr}${color} Client Menu
+${color3}Super+t${alignr}${color} Terminal
+${color3}Super+f${alignr}${color} File Manager
+${color3}Super+e${alignr}${color} Editor
+${color3}Super+m${alignr}${color} Media Player
+${color3}Super+w${alignr}${color} Web Browser
+${color3}Super+h${alignr}${color} Task Manager
+${color3}Super+l${alignr}${color} Lock Screen
+${color3}Super+v${alignr}${color} Volume Control
+${color3}Super+x${alignr}${color} Logout
+${color3}PrtSc${alignr}${color} Screenshot
+]];
+
+-- TODO:
+-- ${color3}GPU: ${color}${alignr}FIX ME
+-- ${color}${color3}SSD:${color}${alignr}FIX ME
+-- add some funny ascii art??
