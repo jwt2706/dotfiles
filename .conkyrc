@@ -14,9 +14,9 @@ conky.config = {
 -- Enjoy! :)
 
 --[[
-      NOTE FROM ME:
-      i was inspired by this https://github.com/lutzseverino/conky-setup/
-      i noticed they were using the same wallpaper as me lol, so i went on to use some of the stuff there :)
+note from ME:
+i was inspired by this https://github.com/lutzseverino/conky-setup/blob/master/conky.conf
+i noticed they were using the same wallpaper as me lol, so i went on to use some of the stuff there :)
 ]]
 
 --##############################################
@@ -74,18 +74,18 @@ conky.config = {
 
 conky.text = [[
 
+${color4}${alignc}${font Liberation Sans:size=12}CrunchBang++
 ${font Liberation Sans:size=36}${color1}${alignc}${time %I:%M}
 ${voffset -36}${font}${alignc}${color}${time %a, %d %B %Y}
 
 ${font}${color1}S Y S T E M    I N F O R M A T I O N  ${hr 2}
 ${color3}Kernel: ${alignr}${color}${kernel}
-${color3}Distro: ${alignr}${color}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4"" $5'}}
+${color3}Distro: ${alignr}${color}${execi 999999999 lsb_release -d | grep 'Descr'|awk {'print $2" "$5'}}
 ${color3}Uptime: ${alignr}${color}${uptime}
 ${color3}Host: ${alignr}${color}${nodename}
-${color3}Disk usage: ${alignr}${color}${fs_used /}/${fs_size /}
-${color3}Swap usage: ${alignr}${color}${swap}/${swapmax}
-${color3}CPU  [ ${color1}${execi 9999999999 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 19-26}${color3} ]: ${alignr}${color}${cpu cpu0}%
+${color3}Disk: ${alignr}${color}${fs_used /home}/${fs_size /home}
 ${color3}RAM: ${alignr}${color}${mem}/${memmax}
+${color3}CPU: ${alignr}${color}${cpu cpu0}%
 ${color1}    Core 1:  ${color4}${cpubar cpu1}
 ${color1}    Core 2:  ${color4}${cpubar cpu2}
 ${color1}    Core 3:  ${color4}${cpubar cpu3}
@@ -95,7 +95,7 @@ ${font}${color1}T E M P E R A T U R E  ${hr 2}
 ${voffset 5}${color}${font}${color3}CPU: ${color}${alignr}${execi 5 sensors | grep CPU: | cut -c 16-19} C
 
 ${font}${color1}V P N  ${hr 2}
-${color3}${execi 20 ./documents/scripts/vpn_status.sh}
+${color3}${execi 20 ./documents/scripts/mullvad_status.sh}
 
 ${font}${color1}S H O R T C U T    K E Y S  ${hr 2}
 ${color3}Alt+F2${alignr}${color} Run Dialog
@@ -117,4 +117,3 @@ ${color3}PrtSc${alignr}${color} Screenshot
 -- TODO:
 -- ${color3}GPU: ${color}${alignr}FIX ME
 -- ${color}${color3}SSD:${color}${alignr}FIX ME
--- add some funny ascii art??
