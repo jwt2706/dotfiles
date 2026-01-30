@@ -1,0 +1,30 @@
+# Neovim temporary files
+*.swp
+*.swo
+*.swx
+*.bak
+*.tmp
+*.orig
+
+# Undo / backup directories
+backup/
+undo/
+swap/
+
+# NvChad plugin manager auto-install folder
+lazy/
+.config/nvim/lazy/
+.config/nvim/.git/
+.config/nvim/build/
+.config/nvim/cache/
+
+# Build / cache directories created by plugins
+build/
+cache/
+
+# Python / Node caches if used inside nvim
+__pycache__/
+*.pyc
+node_modules/
+*.log
+
