@@ -43,12 +43,12 @@ conky.config = {
 conky.text = [[
 
 ${color4}${alignc}${font Hurmit Nerd Font Mono:size=12}${USER}@${nodename}
-${font Liberation Sans:size=36}${color1}${alignc}${time %I:%M}
+${font Hurmit Nerd Font Mono:size=36}${color1}${alignc}${time %I:%M}
 ${voffset -36}${font}${alignc}${color}${time %a, %d %B %Y}
 
 ${font}${color1}SYSTEM INFORMATION ${hr 2}
 ${color3}Kernel: ${alignr}${color}${kernel}
-${color3}Distro: ${alignr}${color}${execi 999999999 lsb_release -d | grep 'Descr'|awk {'print $2" "$5'}}
+${color3}Distro: ${alignr}${color}${execi 999999999 lsb_release -d | grep 'Descr' | awk {'print $2, $3, $4'}}
 ${color3}Uptime: ${alignr}${color}${uptime}
 
 ${font}${color1}MEMORY ${hr 2}
@@ -64,5 +64,6 @@ ${color1}  Core 2:  ${color4}${cpubar cpu2 8,100}
 ${color1}  Core 3:  ${color4}${cpubar cpu3 8,100}
 ${color1}  Core 4:  ${color4}${cpubar cpu4 8,100}
 
+${color3}${alignc}jthome.net
 ]];
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "$DESKTOP_SESSION" = "cinnamon" ]; then 
-   sleep 10s
+   sleep 5s
    killall conky
    cd "$HOME/.conky"
    conky -c "$HOME/.conky/.conkyrc" &
